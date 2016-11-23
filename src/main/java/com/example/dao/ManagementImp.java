@@ -7,7 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
+import com.example.desalgorithm.JavaMD5Hash;
+import com.example.model.Company;
 import com.example.model.Order;
 import com.example.model.User;
 
@@ -27,17 +28,31 @@ public class ManagementImp implements Service {
 	}
 
 	public User login(String email, String password) {
-		Query query = this.em
-				.createQuery("FROM User AS user WHERE user.email=? AND user.password = ?");
+		Query query = this.em.createQuery("FROM User AS user WHERE user.email=?");
 		query.setParameter(0, email);
-		query.setParameter(1, password);
 		User user = (User) query.getSingleResult();
-		return user;
+		String encryptedPassword = user.getPassword();
+		if (encryptedPassword.equals(new JavaMD5Hash().md5(password)))
+			return user;
+		else
+			return null;
 	}
-		
+
 	public void addUserOrder(User user, Order order) {
 		user.addOrder(order);
 		save(user);
+		save(order);
+	}
+
+	public void addCompayOrder(Company company, Order order) {
+		company.addOrder(order);
+		save(company);
+		save(order);
+	}
+
+	public void addOrderfromCompanies(Order order, Company company) {
+		order.addCompany(company);
+		save(company);
 		save(order);
 	}
 

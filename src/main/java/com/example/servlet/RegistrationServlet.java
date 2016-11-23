@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.example.dao.ManagementImp;
 import com.example.dao.Service;
+import com.example.desalgorithm.JavaMD5Hash;
 import com.example.model.User;
 
 /**
- * Servlet implementation class RegisterServlet
+ * Servlet implementation class RegistrationServlet
  */
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,24 +27,16 @@ public class RegistrationServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Service service = new ManagementImp();
 		PrintWriter out = response.getWriter();
-
 		try {
 			String name = request.getParameter("name");
 			String surnname = request.getParameter("surnname");
@@ -54,18 +47,16 @@ public class RegistrationServlet extends HttpServlet {
 			String password = request.getParameter("password");
 			String confirmpassword = request.getParameter("confirmpassword");
 			String address = request.getParameter("address");
+			String encryptedPassword = new JavaMD5Hash().md5(password);
 			if (password.equals(confirmpassword)) {
-				User user = new User(email, username, password, name, surnname,
-						age, dob, address);
-				System.out.println("I am here__________");
+				User user = new User(email, username, encryptedPassword, name, surnname, age, dob, address);
 				service.save(user);
-				out.print("Your details are : <br/>");
-				out.print("<p>" + user + "</p>");
+				response.sendRedirect("/deliverytrackingsystem/index.jsp");
 			} else
 				response.sendRedirect("/deliverytrackingsystem/RegistrationPage.jsp");
 		} catch (Exception e) {
-			response.sendRedirect("/deliverytrackingsystem/RegistrationPage.jsp");
-
+			System.err.println("error occured: " + e);
+			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
 		} finally {
 
 			service.close();
