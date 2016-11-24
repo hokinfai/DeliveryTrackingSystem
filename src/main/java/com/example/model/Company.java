@@ -6,35 +6,43 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "dts_Company")
 public class Company {
-
 	@Id
+	private String registrationNumber;
 	private String name;
 	private String manager;
 	private String location;
 	private String phone;
 	private String email;
-	private String registrationNumber;
 
 	@ManyToMany
 	private List<Order> orderList;
 
 	public Company() {
-
 	}
 
-	public Company(String name, String manager, String location, String phone,
-			String email, String registrationNumber) {
+	public Company(String registrationNumber, String name, String manager,
+			String location, String phone, String email) {
 		super();
+		this.registrationNumber = registrationNumber;
 		this.name = name;
 		this.manager = manager;
 		this.location = location;
 		this.phone = phone;
 		this.email = email;
-		this.registrationNumber = registrationNumber;
 		this.orderList = new ArrayList<Order>();
+	}
+
+	public String getRegistrationNumber() {
+		return registrationNumber;
+	}
+
+	public void setRegistrationNumber(String registrationNumber) {
+		this.registrationNumber = registrationNumber;
 	}
 
 	public String getName() {
@@ -61,14 +69,6 @@ public class Company {
 		this.location = location;
 	}
 
-	public List<Order> getOrderList() {
-		return orderList;
-	}
-
-	public void addOrder(Order order) {
-		this.orderList.add(order);
-	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -85,24 +85,19 @@ public class Company {
 		this.email = email;
 	}
 
-	public String getRegistrationNumber() {
-		return registrationNumber;
+	public List<Order> getOrderList() {
+		return orderList;
 	}
 
-	public void setRegistrationNumber(String registrationNumber) {
-		this.registrationNumber = registrationNumber;
-	}
-
-	public void setOrder(List<Order> orderList) {
-		this.orderList = orderList;
+	public void addOrder(Order order) {
+		this.orderList.add(order);
 	}
 
 	@Override
 	public String toString() {
-		return "Company [name=" + name + ", manager=" + manager + ", location="
-				+ location + ", phone=" + phone + ", email=" + email
-				+ ", registrationNumber=" + registrationNumber + ", orderList="
-				+ orderList + "]";
+		return "Company [registrationNumber=" + registrationNumber + ", name="
+				+ name + ", manager=" + manager + ", location=" + location
+				+ ", phone=" + phone + ", email=" + email + "]";
 	}
 
 }

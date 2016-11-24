@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.example.dao.ManagementImp;
-import com.example.dao.Service;
+import com.example.dao.UserImp;
+import com.example.dao.UserService;
 import com.example.model.User;
 
 /**
@@ -43,16 +43,16 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
 		try {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-			Service service = new ManagementImp();
+			UserService service = new UserImp();
 			User user = service.login(email, password);
+			session.setAttribute("user", user);
 			if (!user.equals(null)) {
 				response.sendRedirect("/deliverytrackingsystem/index.jsp");
-				session.setAttribute("user", user);
-				System.out.println(user);
+				System.out.println("login servlet: " + user.toString());
 			}
 		} catch (Exception e) {
 			System.err.println("Invalid login parameters: " + e);

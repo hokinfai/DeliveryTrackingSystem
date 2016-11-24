@@ -20,20 +20,19 @@ import javax.persistence.TemporalType;
 import com.example.dao.DeliveryStatus;
 
 @Entity
-@Table(name = "USER_ORDER")
+@Table(name = "dts_ORDER")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "order_id")
 	private int id;
-	private String fromAddress;
-	private String destination;
+	private String shipFrom;
+	private String shipTo;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
-	private String size;
+	private Date orderDate;
+	private String boxDimension;
 	private int weight;
-	private DeliveryStatus status;
-	private String dealer;
+	private String orderStatus;
 	@Temporal(TemporalType.DATE)
 	private Date expectedArrivalDate;
 
@@ -48,49 +47,49 @@ public class Order {
 
 	}
 
-	public Order(String fromAddress, String destination, String size,
-			int weight, DeliveryStatus status, String dealer) {
-		this.fromAddress = fromAddress;
-		this.destination = destination;
-		this.date = new Date();
-		this.size = size;
+	public Order(String shipFrom, String shipTo, String boxDimension,
+			int weight, String orderStatus) {
+		this.shipFrom = shipFrom;
+		this.shipTo = shipTo;
+		this.orderDate = new Date();
+		this.boxDimension = boxDimension;
 		this.weight = weight;
-		this.status = status;
-		this.dealer = dealer;
+		this.orderStatus = orderStatus;
 		this.expectedArrivalDate = getTheExpectedArrivalDate();
 		this.companyList = new ArrayList<Company>();
 	}
 
-	public String getDealer() {
-		return dealer;
+	public List<Company> getCompanyList() {
+		return companyList;
 	}
 
-	public void setDealer(String dealer) {
-		this.dealer = dealer;
+	public void addCompany(Company company) {
+		this.companyList.add(company);
+		company.addOrder(this);
 	}
 
 	public String getFromAddress() {
-		return fromAddress;
+		return shipFrom;
 	}
 
 	public void setFromAddress(String fromAddress) {
-		this.fromAddress = fromAddress;
+		this.shipFrom = fromAddress;
 	}
 
 	public String getDestination() {
-		return destination;
+		return shipTo;
 	}
 
 	public void setDestination(String destination) {
-		this.destination = destination;
+		this.shipTo = destination;
 	}
 
 	public String getSize() {
-		return size;
+		return boxDimension;
 	}
 
 	public void setSize(String size) {
-		this.size = size;
+		this.boxDimension = size;
 	}
 
 	public int getWeight() {
@@ -101,12 +100,12 @@ public class Order {
 		this.weight = weight;
 	}
 
-	public DeliveryStatus getStatus() {
-		return status;
+	public String getStatus() {
+		return orderStatus;
 	}
 
-	public void setStatus(DeliveryStatus status) {
-		this.status = status;
+	public void setStatus(String status) {
+		this.orderStatus = status;
 	}
 
 	public Date getTheExpectedArrivalDate() {
@@ -124,24 +123,24 @@ public class Order {
 		this.expectedArrivalDate = expectedArrivalDate;
 	}
 
-	public List<Company> getCompanyList() {
-		return companyList;
+	public Date getOrderDate() {
+		return orderDate;
 	}
 
-	public void addCompany(Company company) {
-		this.companyList.add(company);
-		company.addOrder(this);
+	public Date setOrderDate(Date orderDate) {
+		return this.orderDate = orderDate;
+	}
+
+	public int getId() {
+		return this.id;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", fromAddress=" + fromAddress
-				+ ", destination=" + destination + ", date=" + date + ", size="
-				+ size + ", weight=" + weight + ", status=" + status
-				+ ", dealer=" + dealer + ", expectedArrivalDate="
-				+ expectedArrivalDate + ", user=" + user + ", companyList="
-				+ companyList + "]";
+		return "Order [fromAddress=" + shipFrom + ", destination=" + shipTo
+				+ ", date=" + orderDate + ", size=" + boxDimension
+				+ ", weight=" + weight + ", status=" + orderStatus
+				+ ", expectedArrivalDate=" + expectedArrivalDate + "]";
 	}
-
 
 }

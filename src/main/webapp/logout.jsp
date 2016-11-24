@@ -1,5 +1,6 @@
 
 <%@ include file="header.jsp"%>
+
 <%
 	session.invalidate();
 %>
@@ -23,5 +24,6 @@
 	</div>
 	<!--Our Company Part Ends -->
 </div>
+
 <!--Our Company Bacground Part Ends -->
 <%@ include file="footer.jsp"%>

@@ -11,7 +11,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Package</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<link href="style/tablestyle.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -44,7 +45,7 @@
 				<li><a href="/deliverytrackingsystem/index.jsp" title="Home">Home</a></li>
 				<li><a href="#" title="Track">Track</a></li>
 				<li><a href="#" title="Our Services">Services</a></li>
-				<li><a href="/deliverytrackingsystem/sessionChecking.jsp"
+				<li><a href="/deliverytrackingsystem/myaccount.jsp"
 					title="My Account">My Account</a></li>
 				<li><a href="#" title="Help Us">Help</a></li>
 				<li><a href="#" title="About">About</a></li>
@@ -52,7 +53,9 @@
 			</ul>
 			<%
 				if (session.getAttribute("user") == null) {
-					out.print("<a href=\"/deliverytrackingsystem/register.jsp\" class=\"signup\" title=\"signup now\"></a>");
+					out.print(
+							"<a href=\"/deliverytrackingsystem/register.jsp\" class=\"signup\" title=\"signup now\"></a>");
+
 				}
 			%>
 			<br class="spacer" />
@@ -65,7 +68,8 @@
 				<li><a href="#" title="Our Success">Our Success</a></li>
 				<li><a href="#" title="News">News</a></li>
 				<li><a href="#" title="FAQ">FAQ</a></li>
-				<li><a href="#" title="Company Login">Company Login</a></li>
+				<li><a href="companylogin.jsp" title="Company Login">Company
+						Login</a></li>
 			</ul>
 			<br class="spacer" />
 		</div>

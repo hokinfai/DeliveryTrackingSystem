@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.dao.ManagementImp;
-import com.example.dao.Service;
+import com.example.dao.UserImp;
+import com.example.dao.UserService;
 import com.example.desalgorithm.JavaMD5Hash;
 import com.example.model.User;
 
@@ -35,7 +35,7 @@ public class RegistrationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Service service = new ManagementImp();
+		UserService service = new UserImp();
 		PrintWriter out = response.getWriter();
 		try {
 			String name = request.getParameter("name");
@@ -58,7 +58,6 @@ public class RegistrationServlet extends HttpServlet {
 			System.err.println("error occured: " + e);
 			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
 		} finally {
-
 			service.close();
 		}
 	}

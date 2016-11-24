@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "dts_user")
 public class User {
 	@Id
 	@Column(unique = true, nullable = false)
@@ -23,6 +25,7 @@ public class User {
 	@Column(name = "Date_of_birth")
 	private String dob;
 	private String address;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_email")
 	private List<Order> orderList;
@@ -30,8 +33,8 @@ public class User {
 	public User() {
 	}
 
-	public User(String email, String username, String password, String name,
-			String surnname, int age, String dob, String address) {
+	public User(String email, String username, String password, String name, String surnname, int age, String dob,
+			String address) {
 		this.email = email;
 		this.username = username;
 		this.password = password;
@@ -108,11 +111,7 @@ public class User {
 	}
 
 	public List<Order> getOrder() {
-		return orderList;
-	}
-
-	public void setOrder(List<Order> order) {
-		this.orderList = order;
+		return this.orderList;
 	}
 
 	public void addOrder(Order order) {
@@ -121,9 +120,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [email=" + email + ", username=" + username
-				+ ", password=" + password + ", name=" + name + ", surnname="
-				+ surnname + ", age=" + age + ", dob=" + dob + ", address="
-				+ address;
+		return "User [email=" + email + ", username=" + username + ", password=" + password + ", name=" + name
+				+ ", surnname=" + surnname + ", age=" + age + ", dob=" + dob + ", address=" + address;
 	}
 }
