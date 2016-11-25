@@ -40,7 +40,7 @@ public class Order {
 	@JoinColumn(name = "user_email")
 	private User user;
 
-	@ManyToMany(mappedBy = "orderList")
+	@ManyToMany
 	private List<Company> companyList;
 
 	public Order() {
@@ -65,7 +65,7 @@ public class Order {
 
 	public void addCompany(Company company) {
 		this.companyList.add(company);
-		company.addOrder(this);
+		// company.addOrder(this);
 	}
 
 	public String getFromAddress() {
@@ -133,6 +133,10 @@ public class Order {
 
 	public int getId() {
 		return this.id;
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 	@Override

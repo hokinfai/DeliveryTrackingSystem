@@ -4,12 +4,13 @@
 <div id="ourCompany-bg">
 	<!--Our Company Part Starts -->
 	<div id="ourCompany-part">
-		<h2 class="ourCompany-hdr">Welcome to our family, Register NOW!</h2>
+		<h2 class="ourCompany-hdr">Update Detail:</h2>
 		<!--Our Company Left Part Starts -->
 
 		<div id="ourCompany-rightPart">
-			<form action="/deliverytrackingsystem/register" method="post"
+			<form action="/deliverytrackingsystem/modify" method="post"
 				onsubmit="return checkForm(this);">
+
 
 				<table style="width: 500px">
 					<tr>
@@ -38,21 +39,9 @@
 							style="height: 20px; font-size: 15px" size="31"></td>
 					</tr>
 					<tr>
-						<td><font face="Comic Sans MS">E-mail:</font></td>
-						<td><input type="email" name="email"
-							placeholder="email@example.com"
-							style="height: 20px; font-size: 15px" size="20"></td>
-					</tr>
-					<tr>
 						<td><font face="Comic Sans MS">Password:</font></td>
 						<td><input type="password" name="password"
 							placeholder="8 letters and number"
-							style="height: 20px; font-size: 15px" size="20"></td>
-					</tr>
-					<tr>
-						<td><font face="Comic Sans MS">Confirm password:</font></td>
-						<td><input type="password" name="confirmpassword"
-							placeholder="Confirm Password"
 							style="height: 20px; font-size: 15px" size="20"></td>
 					</tr>
 					<tr>
@@ -63,8 +52,12 @@
 						<td></td>
 						<td>&emsp;</td>
 					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="Save Change"></td>
+					</tr>
 				</table>
-				<input type="submit" value="Register">
+
 			</form>
 		</div>
 		<!--Our Company Right Part Ends -->

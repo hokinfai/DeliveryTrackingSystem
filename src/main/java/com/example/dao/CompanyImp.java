@@ -28,13 +28,6 @@ public class CompanyImp implements CompanyService {
 		save(company);
 	}
 
-	public Company getCompanyByReNum(String number) {
-		Query query = this.em
-				.createQuery("FROM Company AS company WHERE company.registrationNumber=?");
-		query.setParameter(0, number);
-		Company company = (Company) query.getSingleResult();
-		return company;
-	}
 
 	public void close() {
 		if (this.em != null || this.emf != null) {

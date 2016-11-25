@@ -12,7 +12,7 @@ public interface OrderService {
 
 	public void addOrderfromCompanies(Order order, Company company);
 
-	public Company getCompanyByReNum(String number);
+	public Company getCompanyByRegiManaName(String number, String name, String manager);
 
 	public void close();
 }

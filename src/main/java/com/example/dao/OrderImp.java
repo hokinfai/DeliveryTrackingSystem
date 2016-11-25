@@ -19,7 +19,9 @@ public class OrderImp implements OrderService {
 
 	public void save(Object object) {
 		this.em.getTransaction().begin();
+
 		this.em.persist(object);
+		this.em.flush();
 		this.em.getTransaction().commit();
 	}
 
@@ -37,10 +39,13 @@ public class OrderImp implements OrderService {
 		save(company);
 	}
 
-	public Company getCompanyByReNum(String number) {
+	public Company getCompanyByRegiManaName(String number, String name,
+			String manager) {
 		Query query = this.em
-				.createQuery("FROM Company AS company WHERE company.registrationNumber=?");
+				.createQuery("FROM Company AS company WHERE company.registrationNumber=? AND company.name = ? AND company.manager = ?");
 		query.setParameter(0, number);
+		query.setParameter(1, name);
+		query.setParameter(2, manager);
 		Company company = (Company) query.getSingleResult();
 		return company;
 	}

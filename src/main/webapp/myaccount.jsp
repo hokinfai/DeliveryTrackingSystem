@@ -7,25 +7,23 @@
 		<h2 class="ourCompany-hdr">My Account</h2>
 		<!--Our Company Left Part Starts -->
 		<div id="ourCompany-leftPart">
-			<ul>
-				<h2 class="moreIdeas-Hdr">
-					<a href="/deliverytrackingsystem/myaccount.jsp">Your Details</a>
-
-				</h2>
-				<ul class="emptySpace"></ul>
-				<h2 class="moreInfo-Hdr">
-					<a href="/deliverytrackingsystem/myorder.jsp">Your Orders</a>
-				</h2>
-				<ul class="emptySpace"></ul>
-				<h2 class="faq-Hdr">
-					<a href="#content">More Information</a>
-				</h2>
-				<ul class="emptySpace"></ul>
-				<h2 class="searchUrl-Hdr">
-					<a href="logout.jsp">Logout</a>
-				</h2>
-				<ul class="emptySpace">
-				</ul>
+			<ul></ul>
+			<h2 class="moreIdeas-Hdr">
+				<a href="/deliverytrackingsystem/myaccount.jsp">Your Details</a>
+			</h2>
+			<ul class="emptySpace"></ul>
+			<h2 class="moreInfo-Hdr">
+				<a href="/deliverytrackingsystem/myorder.jsp">Your Orders</a>
+			</h2>
+			<ul class="emptySpace"></ul>
+			<h2 class="faq-Hdr">
+				<a href="#content">More Information</a>
+			</h2>
+			<ul class="emptySpace"></ul>
+			<h2 class="searchUrl-Hdr">
+				<a href="logout.jsp">Logout</a>
+			</h2>
+			<ul class="emptySpace">
 			</ul>
 		</div>
 		<!--Our Company Left Part Ends -->
@@ -34,6 +32,7 @@
 			<%
 				User loginUser = (User) session.getAttribute("user");
 			%>
+
 			<table width="350" rules="rows" class="userDetail" height="250px">
 				<tr>
 					<td style="color: #A0522D" width="35%">Name:</td>
@@ -63,8 +62,16 @@
 					<td style="color: #A0522D">Address:</td>
 					<td style="font-family: courier; color: blue;"><%=loginUser.getAddress()%></td>
 				</tr>
+				<tr>
+					<td></td>
 
+					<td align="right"><form action="detailEdit.jsp">
+							<input type="submit" value="Edit" />
+						</form></td>
+
+				</tr>
 			</table>
+
 		</div>
 
 		<!--Our Company Right Part Ends -->

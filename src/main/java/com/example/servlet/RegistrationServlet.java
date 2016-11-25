@@ -51,6 +51,7 @@ public class RegistrationServlet extends HttpServlet {
 			if (password.equals(confirmpassword)) {
 				User user = new User(email, username, encryptedPassword, name, surnname, age, dob, address);
 				service.save(user);
+				service.close();
 				response.sendRedirect("/deliverytrackingsystem/index.jsp");
 			} else
 				response.sendRedirect("/deliverytrackingsystem/RegistrationPage.jsp");
@@ -58,7 +59,7 @@ public class RegistrationServlet extends HttpServlet {
 			System.err.println("error occured: " + e);
 			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
 		} finally {
-			service.close();
+		
 		}
 	}
 

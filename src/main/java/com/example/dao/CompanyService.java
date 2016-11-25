@@ -8,7 +8,5 @@ public interface CompanyService {
 
 	public void addCompayOrder(Company company, Order order);
 
-	public Company getCompanyByReNum(String number);
-
 	public void close();
 }

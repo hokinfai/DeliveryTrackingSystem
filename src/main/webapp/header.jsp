@@ -21,7 +21,7 @@
 	<div id="header-bg">
 		<!--Header Contant Part Starts -->
 		<div id="header">
-			<a href="index.html"><img src="images/logo.gif" alt="Package"
+			<a href="index.jsp"><img src="images/logo.gif" alt="Package"
 				width="205" height="62" border="0" class="logo" title="Package" /></a>
 			<!--Login Background Starts -->
 			<!--Login Area Starts -->
@@ -45,17 +45,24 @@
 				<li><a href="/deliverytrackingsystem/index.jsp" title="Home">Home</a></li>
 				<li><a href="#" title="Track">Track</a></li>
 				<li><a href="#" title="Our Services">Services</a></li>
-				<li><a href="/deliverytrackingsystem/myaccount.jsp"
-					title="My Account">My Account</a></li>
+
 				<li><a href="#" title="Help Us">Help</a></li>
 				<li><a href="#" title="About">About</a></li>
-				<li class="noBg"><a href="#" title="Contact">Contact</a></li>
+
+				<%
+					if (session.getAttribute("user") != null
+							&& session.getAttribute("company") == null) {
+						out.print("<li><a href=\"#\" title=\"Contact\">Contact</a></li>");
+						out.print("<li class=\"noBg\"><a href=\"/deliverytrackingsystem/myaccount.jsp\" title=\"My Account\">My Account</a></li>");
+					} else
+						out.print("<li class=\"noBg\"><a href=\"#\" title=\"Contact\">Contact</a></li>");
+				%>
+
 			</ul>
 			<%
-				if (session.getAttribute("user") == null) {
-					out.print(
-							"<a href=\"/deliverytrackingsystem/register.jsp\" class=\"signup\" title=\"signup now\"></a>");
-
+				if (session.getAttribute("user") == null
+						&& session.getAttribute("company") == null) {
+					out.print("<a href=\"/deliverytrackingsystem/register.jsp\" class=\"signup\" title=\"signup now\"></a>");
 				}
 			%>
 			<br class="spacer" />

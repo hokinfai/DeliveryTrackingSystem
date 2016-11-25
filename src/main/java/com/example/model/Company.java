@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -19,7 +20,7 @@ public class Company {
 	private String phone;
 	private String email;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "companyList")
 	private List<Order> orderList;
 
 	public Company() {
@@ -91,6 +92,9 @@ public class Company {
 
 	public void addOrder(Order order) {
 		this.orderList.add(order);
+		System.out.println("order in company model: uppper: "+order);
+		order.addCompany(this);
+		System.out.println("order in company model: downer: "+this);
 	}
 
 	@Override

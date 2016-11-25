@@ -14,6 +14,8 @@ public interface UserService {
 	public List<Object> getAllUser();
 
 	public User login(String email, String password);
+	
+	public User getUser(String email);
 
 	public List<Order> getUserOrder(User user);
 

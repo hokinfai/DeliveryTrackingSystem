@@ -8,8 +8,7 @@
 		<!--Our Company Left Part Starts -->
 
 		<div id="ourCompany-rightPart">
-			<form action="/deliverytrackingsystem/register" method="post"
-				onsubmit="return checkForm(this);">
+			<form action="/deliverytrackingsystem/companyLogin" method="post">
 
 				<table width="400">
 					<tr>
@@ -18,8 +17,13 @@
 							placeholder="Registration Number"></td>
 					</tr>
 					<tr>
-						<td><font face="Comic Sans MS">Name:</font></td>
-						<td><input type="text" name="surnname"
+						<td><font face="Comic Sans MS">Manager Name:</font></td>
+						<td><input type="text" name="managername"
+							placeholder="Manager Name"></td>
+					</tr>
+					<tr>
+						<td><font face="Comic Sans MS">Company Name:</font></td>
+						<td><input type="text" name="companyname"
 							placeholder="Company Name"></td>
 					</tr>
 
