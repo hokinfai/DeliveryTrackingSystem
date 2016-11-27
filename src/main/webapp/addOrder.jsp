@@ -25,8 +25,12 @@
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Status:</font></td>
-						<td><input type="text" name="status" placeholder="status"
-							style="height: 20px; font-size: 15px" size="31"></td>
+						<td><select name="status">
+								<option value="ARRIVED"><%=DeliveryStatus.ARRIVED%></option>
+								<option value="CANCELLED"><%=DeliveryStatus.CANCELLED%></option>
+								<option value="DELIVERING"><%=DeliveryStatus.DELIVERING%></option>
+								<option value="PENDING"><%=DeliveryStatus.PENDING%></option>
+						</select></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Weight:</font></td>
