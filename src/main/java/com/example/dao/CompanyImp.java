@@ -1,5 +1,8 @@
 package com.example.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -27,7 +30,6 @@ public class CompanyImp implements CompanyService {
 		company.addOrder(order);
 		save(company);
 	}
-
 
 	public void close() {
 		if (this.em != null || this.emf != null) {

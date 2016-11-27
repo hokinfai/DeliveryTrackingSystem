@@ -1,5 +1,4 @@
-<%@ include file="sessionChecking.jsp"%><%@ page import="java.util.List"
-	import="com.example.model.Order"%>
+<%@ page import="java.util.List" import="com.example.model.Order"%>
 <%@ include file="header.jsp"%>
 <!--Our Company Bacground Part Starts -->
 <%
@@ -29,15 +28,15 @@
 				<tbody>
 					<%
 						for (Order o : order) {
-								out.print("<tr><td><strong>" + o.getId() + "</strong></td>");
-								out.print("<td>" + o.getFromAddress() + "</td>");
-								out.print("<td>" + o.getDestination() + "</td>");
-								out.print("<td>" + o.getStatus() + "</td>");
-								out.print("<td>" + o.getOrderDate() + "</td>");
-								out.print("<td>" + o.getTheExpectedArrivalDate() + "</td>");
-								out.print("<td>" + o.getWeight() + "</td>");
-								out.print("<td>" + o.getSize() + "</td></tr>");
-						}
+											out.print("<tr><td><strong>" + o.getId() + "</strong></td>");
+											out.print("<td>" + o.getFromAddress() + "</td>");
+											out.print("<td>" + o.getDestination() + "</td>");
+											out.print("<td>" + o.getStatus() + "</td>");
+											out.print("<td>" + o.getOrderDate() + "</td>");
+											out.print("<td>" + o.getTheExpectedArrivalDate() + "</td>");
+											out.print("<td>" + o.getWeight() + "</td>");
+											out.print("<td>" + o.getSize() + "</td></tr>");
+									}
 					%>
 
 

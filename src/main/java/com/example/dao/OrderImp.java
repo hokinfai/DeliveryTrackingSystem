@@ -1,5 +1,8 @@
 package com.example.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -37,6 +40,19 @@ public class OrderImp implements OrderService {
 		order.addCompany(company);
 		save(order);
 		save(company);
+	}
+
+	public List<String> getUserName(List<Order> order) {
+		List<String> nameList = new ArrayList<String>();
+		for (int i = 0; i < order.size(); i++)
+			nameList.add(order.get(i).getUser().getName());
+		return nameList;
+	}
+
+	public List<Order> getCompanyOrder(Company company) {
+		List<Order> orderList = new ArrayList<Order>();
+		orderList = company.getOrderList();
+		return orderList;
 	}
 
 	public Company getCompanyByRegiManaName(String number, String name,

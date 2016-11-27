@@ -44,7 +44,6 @@ public class ChangeUserDetail extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		UserService service = new UserImp();
-		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		try {
 			String name = request.getParameter("name");

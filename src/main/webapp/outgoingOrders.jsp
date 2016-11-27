@@ -1,10 +1,9 @@
 <%@ page import="java.util.List" import="com.example.model.Order"
-	import="com.example.model.Company"%>
+	import="com.example.model.Company" import="com.example.model.User"%>
 <%@ include file="header.jsp"%>
 <!--Our Company Bacground Part Starts -->
 <%
-	Company company = (Company) session.getAttribute("company");
-	System.out.println("----------------");
+	
 %>
 <div id="ourCompany-bg">
 	<!--Our Company Part Starts -->
@@ -26,17 +25,19 @@
 				</thead>
 				<tbody>
 					<%
-						List<Order> order = company.getOrderList();
-																															for (Order o : order) {
-																														out.print("<tr><td><strong>" + o.getId() + "</strong></td>");
-																														out.print("<td>" + o.getUser().getUsername()+ "</td>");
-																														out.print("<td>" + o.getFromAddress() + "</td>");
-																														out.print("<td>" + o.getDestination() + "</td>");
-																														out.print("<td>" + o.getStatus() + "</td>");
-																														out.print("<td>" + o.getOrderDate() + "</td>");
-																														out.print("<td>" + o.getWeight() + "</td>");
-																														out.print("<td>" + o.getSize() + "</td></tr>");
-																															}
+						List<String> username = (List<String>) session.getAttribute("username");
+						List<Order> order = (List<Order>) session.getAttribute("companyOrder");
+						System.out.println("----------------");
+									for(int i = 0; i < order.size(); i ++){
+														out.print("<tr><td><strong>" + order.get(i).getId() + "</strong></td>");
+														out.print("<td>" +  username.get(i)+ "</td>");
+														out.print("<td>" +  order.get(i).getFromAddress() + "</td>");
+														out.print("<td>" +  order.get(i).getDestination() + "</td>");
+														out.print("<td>" +  order.get(i).getStatus() + "</td>");
+														out.print("<td>" +  order.get(i).getOrderDate() + "</td>");
+														out.print("<td>" +  order.get(i).getWeight() + "</td>");
+														out.print("<td>" +  order.get(i).getSize() + "</td></tr>");
+															}
 					%>
 
 				</tbody>
@@ -50,8 +51,7 @@
 				<td><form action="/deliverytrackingsystem/addOrder.jsp">
 						<input type="submit" value="Add">
 					</form></td>
-				<td><form
-						action="/deliverytrackingsystem/changeOrderStatus.jsp">
+				<td><form action="/deliverytrackingsystem/updateOrders.jsp">
 						<input type="submit" value="Update Orders">
 					</form></td>
 			</tr>

@@ -1,6 +1,7 @@
 package com.example.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -48,35 +49,56 @@ public class AddOrder extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		UserService service = new UserImp();
 		OrderService ordSer = new OrderImp();
-		Company thisCompany = (Company) session.getAttribute("company");
-		Company company = ordSer.getCompanyByRegiManaName(
-				thisCompany.getRegistrationNumber(), thisCompany.getName(),
-				thisCompany.getManager());
+		System.out.println("the session in addorder is (Company): "
+				+ session.getAttribute("company"));
+		Company company = (Company) session.getAttribute("company");
 
-		System.out.println("company information here: "
-				+ company.getRegistrationNumber());
 		try {
+			
+			String managerName = company.getManager();
+			String regiNum = company.getRegistrationNumber();
+			String companyName = company.getName();
+			System.out.println("information here: " + companyName + regiNum
+					+ regiNum);
+			Company refresh = ordSer.getCompanyByRegiManaName(regiNum,
+					companyName, managerName);
+			System.out.println("company information here: "
+					+ refresh.getRegistrationNumber());
 			String from = request.getParameter("from");
 			String to = request.getParameter("to");
 			String status = request.getParameter("status");
 			int weight = Integer.parseInt(request.getParameter("weight"));
 			String size = request.getParameter("size");
 			String email = request.getParameter("email");
-			Order order = new Order(from, to, size, weight, status);
+
 			User user = service.getUser(email);
+			Order order = new Order(from, to, size, weight, status);
+
 			System.out.println("user information here: " + user.toString());
 			user.addOrder(order);
-			company.addOrder(order);
+			refresh.addOrder(order);
 			service.save(user);
-			ordSer.save(company);
-			ordSer.save(order);
+			ordSer.save(refresh);
+			service.save(order);
 			service.close();
 			ordSer.close();
-			response.sendRedirect("outgoingOrders.jsp");
+			List<Order> companyOrder = (List<Order>) session
+					.getAttribute("companyOrder");
+			List<String> username = (List<String>) session
+					.getAttribute("username");
+			companyOrder.add(order);
+			username.add(user.getName());
+			System.out.println(username);
+			session.setAttribute("companyOrder", companyOrder);
+			session.setAttribute("username", username);
+			response.sendRedirect("/deliverytrackingsystem/outgoingOrders.jsp");
+
 		} catch (Exception e) {
+			System.out.println(e);
+			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
 		}
 
 	}

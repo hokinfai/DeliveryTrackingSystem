@@ -8,8 +8,8 @@
 
 		<div id="ourCompany-rightPart">
 			<div style="height: 250px; width: 600px">
-				We are sorry, your email address or password is invalid.<br> <br>Please
-				use another email address to login or register. <br> <br>
+				We are sorry, your information you have provided is invalid.<br> <br>Please
+				follow the introduction to use our services. <br> <br>
 				<br>
 				<form action="/deliverytrackingsystem/register.jsp">
 					<input type="submit" value="Go back" />
