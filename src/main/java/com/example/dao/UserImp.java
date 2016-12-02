@@ -13,12 +13,19 @@ import com.example.model.Order;
 import com.example.model.User;
 
 public class UserImp implements UserService {
-	EntityManagerFactory emf;
 	EntityManager em;
+	JavaMD5Hash md5;
 
 	public UserImp() {
-		this.emf = Persistence.createEntityManagerFactory("default");
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("default");
 		this.em = emf.createEntityManager();
+		this.md5 = new JavaMD5Hash();
+	}
+
+	public UserImp(EntityManager em, JavaMD5Hash md5) { 
+		this.em = em;
+		this.md5 = md5;
 	}
 
 	public void save(Object object) {
@@ -28,18 +35,21 @@ public class UserImp implements UserService {
 	}
 
 	public User login(String email, String password) {
-		Query query = this.em.createQuery("FROM User AS user WHERE user.email=?");
+
+		Query query = this.em
+				.createQuery("FROM User AS user WHERE user.email=?");
 		query.setParameter(0, email);
 		User user = (User) query.getSingleResult();
 		String encryptedPassword = user.getPassword();
-		if (encryptedPassword.equals(new JavaMD5Hash().md5(password)))
+		if (encryptedPassword.equals(md5.md5(password)))
 			return user;
 		else
 			return null;
 	}
 
 	public User getUser(String email) {
-		Query query = this.em.createQuery("FROM User AS user WHERE user.email=?");
+		Query query = this.em
+				.createQuery("FROM User AS user WHERE user.email=?");
 		query.setParameter(0, email);
 		User user = (User) query.getSingleResult();
 		return user;
@@ -65,9 +75,8 @@ public class UserImp implements UserService {
 	}
 
 	public void close() {
-		if (this.em != null || this.emf != null) {
+		if (this.em != null) {
 			this.em.close();
-			this.emf.close();
 		}
 	}
 

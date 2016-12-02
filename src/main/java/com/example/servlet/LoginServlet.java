@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.example.dao.SingleFactory;
 import com.example.dao.UserImp;
 import com.example.dao.UserService;
 import com.example.model.Order;
@@ -20,39 +21,34 @@ import com.example.model.User;
  */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private SingleFactory sf;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public LoginServlet() {
-		super();
+		sf = SingleFactory.GetInstance();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	public LoginServlet(SingleFactory sf) {
+		this.sf = sf;
+	}
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ")
-				.append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		UserService service = new UserImp();
+		UserService service = sf.getUserImp();
 		try {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 
-			User user = service.login(email, password);
+			User user = service.login(email, password); 
 			session.setAttribute("user", user);
 
 			if (!user.equals(null)) {

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.example.dao.OrderImp;
 import com.example.dao.OrderService;
+import com.example.dao.SingleFactory;
 import com.example.dao.UserImp;
 import com.example.dao.UserService;
 import com.example.desalgorithm.JavaMD5Hash;
@@ -22,15 +23,21 @@ import com.example.model.User;
 /**
  * Servlet implementation class updateOrders
  */
-public class updateOrders extends HttpServlet {
+public class UpdateOrders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private SingleFactory sf;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public updateOrders() {
+	public UpdateOrders() {
 		super();
+		sf = SingleFactory.GetInstance();
 		// TODO Auto-generated constructor stub
+	}
+
+	public UpdateOrders(SingleFactory sf) {
+		this.sf = sf;
 	}
 
 	/**
@@ -48,7 +55,7 @@ public class updateOrders extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		OrderService ordSer = new OrderImp();
+		OrderService ordSer = sf.getOrderImp();
 		HttpSession session = request.getSession();
 		System.out.println(session.getAttribute("company"));
 		Company company = (Company) session.getAttribute("company");
@@ -77,7 +84,6 @@ public class updateOrders extends HttpServlet {
 				}
 			}
 
-			ordSer.close();
 			session.setAttribute("companyOrder", newOrder);
 
 			response.sendRedirect("/deliverytrackingsystem/outgoingOrders.jsp");
@@ -85,7 +91,7 @@ public class updateOrders extends HttpServlet {
 			System.err.println("error occured: " + e);
 			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
 		} finally {
-
+			ordSer.close();
 		}
 	}
 

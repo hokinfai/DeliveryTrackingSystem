@@ -12,17 +12,21 @@ import com.example.model.Company;
 import com.example.model.Order;
 
 public class OrderImp implements OrderService {
-	EntityManagerFactory emf;
+
 	EntityManager em;
 
 	public OrderImp() {
-		this.emf = Persistence.createEntityManagerFactory("default");
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("default");
 		this.em = emf.createEntityManager();
+	}
+
+	public OrderImp(EntityManager em) {
+		this.em = em;
 	}
 
 	public void save(Object object) {
 		this.em.getTransaction().begin();
-
 		this.em.persist(object);
 		this.em.flush();
 		this.em.getTransaction().commit();
@@ -67,9 +71,8 @@ public class OrderImp implements OrderService {
 	}
 
 	public void close() {
-		if (this.em != null || this.emf != null) {
+		if (this.em != null) {
 			this.em.close();
-			this.emf.close();
 		}
 	}
 

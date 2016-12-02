@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,7 @@ import com.example.dao.CompanyImp;
 import com.example.dao.CompanyService;
 import com.example.dao.OrderImp;
 import com.example.dao.OrderService;
+import com.example.dao.SingleFactory;
 import com.example.desalgorithm.JavaMD5Hash;
 import com.example.model.Company;
 import com.example.model.Order;
@@ -24,13 +28,19 @@ import com.example.model.User;
  */
 public class CompanyLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private SingleFactory sf;
+	private OrderService ordSer;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public CompanyLoginServlet() {
-		super();
+		sf = SingleFactory.GetInstance();
 		// TODO Auto-generated constructor stub
+	}
+
+	public CompanyLoginServlet(SingleFactory sf) {
+		this.sf = sf;
 	}
 
 	/**
@@ -49,12 +59,11 @@ public class CompanyLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String companyName = request.getParameter("companyname");
-		String regiNum = request.getParameter("regiNumber");
-		String managerName = request.getParameter("managername");
-
-		OrderService ordSer = new OrderImp();
 		try {
+			String companyName = request.getParameter("companyname");
+			String regiNum = request.getParameter("regiNumber");
+			String managerName = request.getParameter("managername");
+			ordSer = sf.getOrderImp();
 			Company company = ordSer.getCompanyByRegiManaName(regiNum,
 					companyName, managerName);
 			session.setAttribute("company", company);
@@ -67,8 +76,7 @@ public class CompanyLoginServlet extends HttpServlet {
 			System.err.println("error occured: " + e);
 			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
 		} finally {
-			ordSer.close();
+			// ordSer.close();
 		}
 	}
-
 }

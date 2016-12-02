@@ -8,6 +8,7 @@ import com.example.dao.DeliveryStatus;
 import com.example.dao.ManagementImp;
 import com.example.dao.OrderService;
 import com.example.dao.Service;
+import com.example.dao.SingleFactory;
 import com.example.dao.UserService;
 import com.example.dao.UserImp;
 import com.example.dao.OrderImp;
@@ -18,7 +19,7 @@ import com.example.model.User;
 public class Main {
 
 	public static void main(String[] args) {
-		UserService userService = new UserImp();
+		UserService userService = SingleFactory.GetInstance().getUserImp();
 		OrderService orderService = new OrderImp();
 		CompanyService companyService = new CompanyImp();
 		// Service service = new ManagementImp();

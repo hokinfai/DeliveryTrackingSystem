@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.example.dao.SingleFactory;
 import com.example.dao.UserImp;
 import com.example.dao.UserService;
 import com.example.desalgorithm.JavaMD5Hash;
@@ -19,15 +20,20 @@ import com.example.model.User;
  */
 public class ChangeUserDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private SingleFactory sf;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ChangeUserDetail() {
 		super();
+		sf = SingleFactory.GetInstance();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	public ChangeUserDetail(SingleFactory sf) {
+		this.sf = sf;
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -43,7 +49,7 @@ public class ChangeUserDetail extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		UserService service = new UserImp();
+		UserService service = sf.getUserImp();
 		HttpSession session = request.getSession();
 		try {
 			String name = request.getParameter("name");
@@ -53,7 +59,6 @@ public class ChangeUserDetail extends HttpServlet {
 			String dob = request.getParameter("dob");
 			String password = request.getParameter("password");
 			String address = request.getParameter("address");
-
 			String encryptedPassword = new JavaMD5Hash().md5(password);
 			User user = (User) session.getAttribute("user");
 			System.out.println(user.getPassword());
