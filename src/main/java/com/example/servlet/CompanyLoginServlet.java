@@ -74,7 +74,7 @@ public class CompanyLoginServlet extends HttpServlet {
 			response.sendRedirect("/deliverytrackingsystem/outgoingOrders.jsp");
 		} catch (Exception e) {
 			System.err.println("error occured: " + e);
-			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
+			response.sendRedirect("/deliverytrackingsystem/error.jsp");
 		} finally {
 			// ordSer.close();
 		}

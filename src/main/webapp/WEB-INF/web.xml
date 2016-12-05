@@ -35,10 +35,16 @@
 		<servlet-class>com.example.servlet.AddOrder</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>updateOrders</servlet-name>
-		<display-name>updateOrders</display-name>
+		<servlet-name>UpdateOrders</servlet-name>
+		<display-name>UpdateOrders</display-name>
 		<description></description>
-		<servlet-class>com.example.servlet.updateOrders</servlet-class>
+		<servlet-class>com.example.servlet.UpdateOrders</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderTracking</servlet-name>
+		<display-name>OrderTracking</display-name>
+		<description></description>
+		<servlet-class>com.example.servlet.OrderTracking</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegistrationServlet</servlet-name>
@@ -61,7 +67,11 @@
 		<url-pattern>/addOrder</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>updateOrders</servlet-name>
+		<servlet-name>UpdateOrders</servlet-name>
 		<url-pattern>/updateOrders</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderTracking</servlet-name>
+		<url-pattern>/OrderTracking</url-pattern>
 	</servlet-mapping>
 </web-app>

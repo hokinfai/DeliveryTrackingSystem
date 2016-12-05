@@ -15,49 +15,49 @@
 					<tr>
 						<td><font face="Comic Sans MS">Name:</font></td>
 						<td><input type="text" name="name" placeholder="Name"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Surnname:</font></td>
 						<td><input type="text" name="surnname" placeholder="SurnName"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Username:</font></td>
 						<td><input type="text" name="username" placeholder="UserName"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Age:</font></td>
 						<td><input type="text" name="age" placeholder="Age"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Date of Birth:</font></td>
 						<td><input type="text" name="dob" placeholder="DD/MM/YYYY"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">E-mail:</font></td>
 						<td><input type="email" name="email"
 							placeholder="email@example.com"
-							style="height: 20px; font-size: 15px" size="20"></td>
+							style="height: 20px; font-size: 15px" size="20" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Password:</font></td>
 						<td><input type="password" name="password"
 							placeholder="8 letters and number"
-							style="height: 20px; font-size: 15px" size="20"></td>
+							style="height: 20px; font-size: 15px" size="20" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Confirm password:</font></td>
 						<td><input type="password" name="confirmpassword"
 							placeholder="Confirm Password"
-							style="height: 20px; font-size: 15px" size="20"></td>
+							style="height: 20px; font-size: 15px" size="20" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Address:</font></td>
-						<td><textarea name="address" cols="40" rows="5"></textarea></td>
+						<td><textarea name="address" cols="40" rows="5" required></textarea></td>
 					</tr>
 					<tr>
 						<td></td>

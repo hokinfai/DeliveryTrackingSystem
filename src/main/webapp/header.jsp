@@ -4,15 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Package</title>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
 <link href="style/tablestyle.css" rel="stylesheet" type="text/css" />
+<script>
+	function verify() {
+		if (!document.getElementById("check").value.trim().length)
+			alert("Please enter the required elements!");
+	}
+</script>
 </head>
 
 <body>
@@ -43,7 +44,8 @@
 		<div id="navigation">
 			<ul class="mainMenu">
 				<li><a href="/deliverytrackingsystem/index.jsp" title="Home">Home</a></li>
-				<li><a href="#" title="Track">Track</a></li>
+				<li><a href="/deliverytrackingsystem/tracking.jsp"
+					title="Track">Track</a></li>
 				<li><a href="#" title="Our Services">Services</a></li>
 
 				<li><a href="#" title="Help Us">Help</a></li>
@@ -52,10 +54,10 @@
 				<%
 					if (session.getAttribute("user") != null
 							&& session.getAttribute("company") == null) {
-						out.print("<li><a href=\"#\" title=\"Contact\">Contact</a></li>");
+						out.print("<li><a href=\"/deliverytrackingsystem/contact.jsp\" title=\"Contact\">Contact</a></li>");
 						out.print("<li class=\"noBg\"><a href=\"/deliverytrackingsystem/myaccount.jsp\" title=\"My Account\">My Account</a></li>");
 					} else
-						out.print("<li class=\"noBg\"><a href=\"#\" title=\"Contact\">Contact</a></li>");
+						out.print("<li class=\"noBg\"><a href=\"/deliverytrackingsystem/contact.jsp\" title=\"Contact\">Contact</a></li>");
 				%>
 
 			</ul>

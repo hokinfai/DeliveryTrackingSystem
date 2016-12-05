@@ -17,17 +17,17 @@
 						<td><font face="Comic Sans MS">Order ID:</font></td>
 						<td><input type="text" name="orderId"
 							placeholder="Number Only" style="height: 20px; font-size: 15px"
-							size="31"></td>
+							size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Ship From:</font></td>
 						<td><input type="text" name="from" placeholder="From"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Ship To:</font></td>
 						<td><input type="text" name="to" placeholder="To"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Status:</font></td>
@@ -41,12 +41,12 @@
 					<tr>
 						<td><font face="Comic Sans MS">Weight:</font></td>
 						<td><input type="text" name="weight" placeholder="weight"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Size:</font></td>
 						<td><input type="text" name="size" placeholder="size"
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td></td>

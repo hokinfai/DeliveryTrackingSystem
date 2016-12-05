@@ -2,6 +2,7 @@ package com.example.dao;
 
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.validateMockitoUsage;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -11,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -46,11 +48,6 @@ public class OrderImpTest {
 	}
 
 	@Test
-	public void testOrderImp() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testSave() {
 		orderImp.save("abc");
 		verify(mockET).begin();
@@ -74,9 +71,10 @@ public class OrderImpTest {
 	@Test
 	public void testGetUserName() {
 		orderImp.getUserName(mockOrderList);
-		for (int i = 0; i < mockOrderList.size(); i++)
-			mockNameList.add(mockOrderList.get(i).getUser().getName());
-		verify(mockNameList);
+		for (int i = 0; i < mockOrderList.size(); i++) {
+			//mockNameList.add(mockOrderList.get(i).getUser().getName());
+			verify(mockOrderList).get(i).getUser().getName();
+		}
 	}
 
 	@Test
@@ -98,4 +96,8 @@ public class OrderImpTest {
 		verify(mockEM).close();
 	}
 
+	@After
+	public void validate() {
+		validateMockitoUsage();
+	}
 }

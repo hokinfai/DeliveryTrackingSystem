@@ -6,19 +6,22 @@
 		<h2 class="ourCompany-hdr">Our Companies Main Features</h2>
 		<!--Our Company Left Part Starts -->
 		<div id="ourCompany-leftPart">
-			<h2 class="faq-Hdr">Latest F.A.Q's</h2>
+			<h2 class="faq-Hdr">Introduction</h2>
 			<ul class="ourCompany-list">
-				<li>Nulla congue pretium elit. Integer enim risus, mollis.</li>
-				<li>Eget, accumsan id, feugiat eu, velit. Sed molestie.</li>
-				<li>lectus id nisi.</li>
+				<li></li>
+				<li>This is a delivery tracking system.</li>
+				<li>Users can login to view their orders.</li>
+				<li>Companies can add new orders and update, check existing
+					orders.</li>
 			</ul>
 			<h2 class="moreIdeas-Hdr">More Ideas</h2>
 			<ul class="ourCompany-list noBottomPadding">
-				<li>Quisque laoreet, elit at tincidunt porta, massa torr.</li>
-				<li>Porttitor magna, at vehicula pede dui id enim.</li>
-				<li>Pellentesque rhoncus metus quis nulla. Donecllus.</li>
-				<li>Metus, vehicula nec, scelerisque commodo.</li>
-				<li>Egestas eget.</li>
+				<li></li>
+				<li>This website has been builted using Java JPA and still in
+					development stage.</li>
+				<li>More functions such as request for orders will be
+					implemented in the second stage.</li>
+				<li>For more information, please refer to about index.</li>
 			</ul>
 		</div>
 		<!--Our Company Left Part Ends -->
@@ -26,17 +29,20 @@
 		<div id="ourCompany-rightPart">
 			<h2 class="moreInfo-Hdr">More Informations</h2>
 			<ul class="ourCompany-list noBottomPadding">
-				<li><a href="#">Aenean viverra sapien a enim pellentesque</a></li>
+				<li></li>
+				<li><a href="www.github.com/hokinfai/DeliveryTrackingSystem">View
+						the source code on GitHub</a></li>
 			</ul>
-			<p class="moreInfo-Text">
-				Pellentesque id nunc at leo<br /> vestibulum lobortis
-			</p>
-			<h2 class="searchUrl-Hdr">Search Our Url's</h2>
+			<p class="moreInfo-Text">This is an open source project, you are
+				allowed to refer to my code for non-commercial purposes.</p>
+			<h2 class="searchUrl-Hdr">Contact Methods</h2>
 			<ul class="ourCompany-list noBottomPadding">
-				<li><a href="#">www.,elit at tincidunt/porta.com</a></li>
-				<li><a href="#">www.vehicula pede /a/dui id enim.com</a></li>
-				<li><a href="#">www. quis nulla.com</a></li>
-				<li><a href="#">www.scelerisque commodo.com</a></li>
+				<li></li>
+				<li>Email: hokinfaialan@gmail.com</li>
+				<li><a href="www.linkedin.com/in/kinfaiho">LinkedIn</a></li>
+				<li><a href="www.github.com/hokinfai">GitHub</a></li>
+				<li><a href="www.facebook.com/AlanHo">Facebook</a></li>
+
 			</ul>
 		</div>
 		<!--Our Company Right Part Ends -->

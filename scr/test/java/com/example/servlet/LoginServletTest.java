@@ -3,6 +3,7 @@ package com.example.servlet;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.anyString;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -84,13 +86,18 @@ public class LoginServletTest {
 	public void testDoPostHttpServletRequestHttpServletResponseToFail()
 			throws Exception {
 
-		when(mockRequest.getParameter("email")).thenReturn("123");
-		when(mockRequest.getParameter("password")).thenReturn("123");
+		when(mockRequest.getParameter("email")).thenReturn("13");
+		when(mockRequest.getParameter("password")).thenReturn("13");
+		when(mockSer.login("123", "123")).thenReturn(mockUser);
 		loginServlet.doPost(mockRequest, mockResponse);
 		new RuntimeException();
 		verify(mockResponse).sendRedirect(
 				"/deliverytrackingsystem/loginError.jsp");
 
-		
+	}
+
+	@After
+	public void teardown() {
+		loginServlet = null;
 	}
 }

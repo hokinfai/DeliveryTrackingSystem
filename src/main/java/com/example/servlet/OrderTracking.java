@@ -10,33 +10,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.example.dao.OrderImp;
 import com.example.dao.OrderService;
 import com.example.dao.SingleFactory;
-import com.example.dao.UserImp;
-import com.example.dao.UserService;
-import com.example.desalgorithm.JavaMD5Hash;
 import com.example.model.Company;
 import com.example.model.Order;
-import com.example.model.User;
 
 /**
- * Servlet implementation class updateOrders
+ * Servlet implementation class OrderTracking
  */
-public class UpdateOrders extends HttpServlet {
+public class OrderTracking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SingleFactory sf;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UpdateOrders() {
+	public OrderTracking() {
 		super();
 		sf = SingleFactory.GetInstance();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UpdateOrders(SingleFactory sf) {
+	public OrderTracking(SingleFactory sf) {
 		this.sf = sf;
 	}
 
@@ -57,36 +52,20 @@ public class UpdateOrders extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		OrderService ordSer = sf.getOrderImp();
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("company"));
-		Company company = (Company) session.getAttribute("company");
-		int id = Integer.parseInt(request.getParameter("orderId"));
-		String from = request.getParameter("from");
-		String to = request.getParameter("to");
-		String status = request.getParameter("status");
-		int weight = Integer.parseInt(request.getParameter("weight"));
-		String size = request.getParameter("size");
-		List<Order> newOrder = new ArrayList<Order>();
+		int id = Integer.parseInt(request.getParameter("id"));
+		String date = request.getParameter("date").replace("th", "")
+				.replace("st", "").replace("rd", "").replace("nd", "");
+
 		try {
-			List<Order> allOrders = ordSer.getCompanyOrder(company);
-			for (Order o : allOrders) {
-				if (o.getId() == id) {
-					System.out.println(o);
-					Order order = ordSer.getOrder(o.getId());
-					order.setDestination(to);
-					order.setFromAddress(from);
-					order.setSize(size);
-					order.setStatus(status);
-					order.setWeight(weight);
-					ordSer.save(order);
-					newOrder.add(order);
-				} else {
-					newOrder.add(o);
-				}
-			}
-
-			session.setAttribute("companyOrder", newOrder);
-
-			response.sendRedirect("/deliverytrackingsystem/outgoingOrders.jsp");
+			Order order = ordSer.getOrder(id);
+			String dateCheck = ("" + order.getOrderDate() + "")
+					.substring(8, 10);
+			// System.out.println(dateCheck);
+			if (dateCheck.equals(date)) {
+				session.setAttribute("order", order);
+				response.sendRedirect("/deliverytrackingsystem/order.jsp");
+			} else
+				response.sendRedirect("/deliverytrackingsystem/error.jsp");
 		} catch (Exception e) {
 			System.err.println("error occured: " + e);
 			response.sendRedirect("/deliverytrackingsystem/error.jsp");
@@ -94,5 +73,4 @@ public class UpdateOrders extends HttpServlet {
 			ordSer.close();
 		}
 	}
-
 }

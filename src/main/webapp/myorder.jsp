@@ -33,7 +33,7 @@
 											out.print("<td>" + o.getDestination() + "</td>");
 											out.print("<td>" + o.getStatus() + "</td>");
 											out.print("<td>" + o.getOrderDate() + "</td>");
-											out.print("<td>" + o.getTheExpectedArrivalDate() + "</td>");
+											out.print("<td>" + o.getExpectedArrivalDate() + "</td>");
 											out.print("<td>" + o.getWeight() + "</td>");
 											out.print("<td>" + o.getSize() + "</td></tr>");
 									}

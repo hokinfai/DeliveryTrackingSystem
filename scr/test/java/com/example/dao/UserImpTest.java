@@ -11,6 +11,7 @@ import javax.persistence.Query;
 
 import static org.mockito.Mockito.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -55,7 +56,7 @@ public class UserImpTest {
 
 	@Test
 	public void testUserImp() {
-//		fail("Not yet implemented");
+		// fail("Not yet implemented");
 	}
 
 	/*
@@ -106,14 +107,19 @@ public class UserImpTest {
 	@Test
 	public void testGetUserOrder() {
 		userImp.getUserOrder(mockUser);
-		verify(mockUser.getOrder());
+		verify(mockUser).getOrder();
 	}
 
 	@Test
 	public void testClose() {
 		userImp.close();
 		verify(mockEntityManager).close();
-		
+
+	}
+
+	@After
+	public void validate() {
+		validateMockitoUsage();
 	}
 
 }

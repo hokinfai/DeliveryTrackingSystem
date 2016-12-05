@@ -56,7 +56,8 @@ public class ChangeUserDetailTest {
 	private SingleFactory mockSf;
 	@Mock
 	private UserService mockSer;
-
+	@Mock
+	private JavaMD5Hash md5;
 	private ChangeUserDetail change;
 
 	@Before
@@ -87,9 +88,10 @@ public class ChangeUserDetailTest {
 		when(mockRequest.getParameter("username")).thenReturn("someone");
 		when(mockRequest.getParameter("age")).thenReturn("12");
 		when(mockRequest.getParameter("dob")).thenReturn("12/12/1992");
-		when(mockRequest.getParameter("password")).thenReturn("123213213");
-		when(mockRequest.getParameter("address")).thenReturn("Earth");
+		when(mockRequest.getParameter("password")).thenReturn("123");
+		when(md5.md5("123")).thenReturn("123213213");
 		when(mockSession.getAttribute("user")).thenReturn(mockUser);
+		when(mockRequest.getParameter("address")).thenReturn("Earth");
 
 		change.doPost(mockRequest, mockResponse);
 		verify(mockResponse).sendRedirect("/deliverytrackingsystem/index.jsp");
@@ -106,7 +108,7 @@ public class ChangeUserDetailTest {
 	// when(mockRequest.getParameter("dob")).thenReturn("12/12/1992");
 	// when(mockRequest.getParameter("password")).thenReturn("123");
 	// when(mockRequest.getParameter("address")).thenReturn("Earth");
-	// User user = new UserImp().getUser("new@example.com");
+	// User user = mockSer.getUser("new@example.com");
 	// when(mockSession.getAttribute("user")).thenReturn(user);
 	// change.doPost(mockRequest, mockResponse);
 	// verify(mockResponse).sendRedirect("/deliverytrackingsystem/index.jsp");

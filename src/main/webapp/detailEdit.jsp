@@ -18,51 +18,55 @@
 				<table style="width: 500px">
 					<tr>
 						<td><font face="Comic Sans MS">Name:</font></td>
-						<td><input type="text" name="name"
+						<td><input type="text" name="name" id="check"
 							placeholder=<%=loginedUser.getName().replace(" ", "&nbsp;")%>
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Surnname:</font></td>
-						<td><input type="text" name="surnname"
+						<td><input type="text" name="surnname" id="check"
 							placeholder=<%=loginedUser.getSurnname().replace(" ", "&nbsp;")%>
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Username:</font></td>
-						<td><input type="text" name="username"
+						<td><input type="text" name="username" id="check"
 							placeholder=<%=loginedUser.getUsername().replace(" ", "&nbsp;")%>
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Age:</font></td>
-						<td><input type="text" name="age"
+						<td><input type="text" name="age" id="check"
 							placeholder=<%=loginedUser.getAge()%>
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Date of Birth:</font></td>
-						<td><input type="text" name="dob"
+						<td><input type="text" name="dob" id="check"
 							placeholder=<%=loginedUser.getDob().replace(" ", "&nbsp;")%>
-							style="height: 20px; font-size: 15px" size="31"></td>
+							style="height: 20px; font-size: 15px" size="31" required></td>
 					</tr>
-					<tr>
-						<td><font face="Comic Sans MS">Confirm your Password:</font></td>
-						<td><input type="password" name="password"
-							placeholder="8 letters and number"
-							style="height: 20px; font-size: 15px" size="20"></td>
-					</tr>
+
 					<tr>
 						<td><font face="Comic Sans MS">Address:</font></td>
-						<td><textarea name="address" cols="40" rows="5"><%=loginedUser.getAddress()%></textarea></td>
+						<td><textarea id="check" name="address" cols="40" rows="5"
+								required><%=loginedUser.getAddress()%></textarea></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>&emsp;</td>
 					</tr>
 					<tr>
+						<td><font face="Comic Sans MS" color="red">Confirm
+								your Password:</font></td>
+						<td><input type="password" name="password" id="check"
+							placeholder="8 letters and number"
+							style="height: 20px; font-size: 15px" size="20" required></td>
+					</tr>
+					<tr>
 						<td></td>
-						<td><input type="submit" value="Save Change"></td>
+						<td><input type="submit" value="Save Change"
+							onclick="verify()"></td>
 					</tr>
 				</table>
 

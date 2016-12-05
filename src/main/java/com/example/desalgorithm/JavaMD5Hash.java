@@ -4,7 +4,13 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.example.model.User;
+
 public class JavaMD5Hash {
+
+	public JavaMD5Hash() {
+
+	}
 
 	public String md5(String input) {
 		String md5 = null;

@@ -14,17 +14,17 @@
 					<tr>
 						<td><font face="Comic Sans MS">Registration Number:</font></td>
 						<td><input type="text" name="regiNumber"
-							placeholder="Registration Number"></td>
+							placeholder="Registration Number" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Manager Name:</font></td>
 						<td><input type="text" name="managername"
-							placeholder="Manager Name"></td>
+							placeholder="Manager Name" required></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Company Name:</font></td>
 						<td><input type="text" name="companyname"
-							placeholder="Company Name"></td>
+							placeholder="Company Name" required></td>
 					</tr>
 
 					<tr>

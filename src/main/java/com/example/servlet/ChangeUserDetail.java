@@ -21,6 +21,7 @@ import com.example.model.User;
 public class ChangeUserDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SingleFactory sf;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -30,10 +31,10 @@ public class ChangeUserDetail extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	public ChangeUserDetail(SingleFactory sf) {
 		this.sf = sf;
 	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -62,7 +63,7 @@ public class ChangeUserDetail extends HttpServlet {
 			String encryptedPassword = new JavaMD5Hash().md5(password);
 			User user = (User) session.getAttribute("user");
 			System.out.println(user.getPassword());
-
+			System.out.println(encryptedPassword);
 			if (encryptedPassword.equals(user.getPassword())) {
 				User modifiedUser = service.getUser(user.getEmail());
 				modifiedUser.setName(name);
@@ -79,7 +80,7 @@ public class ChangeUserDetail extends HttpServlet {
 				response.sendRedirect("/deliverytrackingsystem/index.jsp");
 		} catch (Exception e) {
 			System.err.println("error occured: " + e);
-			response.sendRedirect("/deliverytrackingsystem/emailError.jsp");
+			response.sendRedirect("/deliverytrackingsystem/error.jsp");
 		} finally {
 
 		}
