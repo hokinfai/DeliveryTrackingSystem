@@ -2,12 +2,8 @@ package com.example.view;
 
 import java.util.List;
 
-import com.example.dao.CompanyImp;
-import com.example.dao.CompanyService;
 import com.example.dao.DeliveryStatus;
-import com.example.dao.ManagementImp;
 import com.example.dao.OrderService;
-import com.example.dao.Service;
 import com.example.dao.SingleFactory;
 import com.example.dao.UserService;
 import com.example.dao.UserImp;
@@ -21,7 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		UserService userService = SingleFactory.GetInstance().getUserImp();
 		OrderService orderService = new OrderImp();
-		CompanyService companyService = new CompanyImp();
+		// CompanyService companyService = new CompanyImp();
 		// Service service = new ManagementImp();
 		// ManagementImp studentServices = (ManagementImp) service;
 
@@ -104,6 +100,5 @@ public class Main {
 		// System.out.println(o.toString());
 
 		orderService.close();
-		companyService.close();
 	}
 }

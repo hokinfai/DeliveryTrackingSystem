@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.example.dao.CompanyImp;
-import com.example.dao.CompanyService;
 import com.example.dao.OrderImp;
 import com.example.dao.OrderService;
 import com.example.dao.SingleFactory;

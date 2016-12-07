@@ -10,8 +10,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.example.dao.CompanyImp;
-import com.example.dao.CompanyService;
 import com.example.dao.OrderImp;
 import com.example.dao.OrderService;
 import com.example.dao.UserImp;

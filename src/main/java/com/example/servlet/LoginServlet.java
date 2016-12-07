@@ -47,18 +47,14 @@ public class LoginServlet extends HttpServlet {
 		try {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-
 			User user = service.login(email, password); 
 			session.setAttribute("user", user);
-
 			if (!user.equals(null)) {
-
 				List<Order> order = service.getUserOrder(user);
 				System.out.println("order in login servlet: " + order);
 				session.setAttribute("order", order);
 				System.out.println("login servlet: " + user.toString());
 				response.sendRedirect("/deliverytrackingsystem/index.jsp");
-
 			}
 		} catch (Exception e) {
 			System.err.println("Invalid login parameters: " + e);

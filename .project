@@ -45,4 +45,16 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.hibernate.eclipse.console.hibernateNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>java</name>
+			<type>2</type>
+			<location>/Users/AlanHo/Documents/Progamming/Tomcat Workspace/deliverytrackingsystem/src/test</location>
+		</link>
+		<link>
+			<name>src/test/java</name>
+			<type>2</type>
+			<location>/Users/AlanHo/Documents/Progamming/Tomcat Workspace/deliverytrackingsystem/src/test</location>
+		</link>
+	</linkedResources>
 </projectDescription>
