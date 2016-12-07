@@ -82,14 +82,14 @@ public class OrderTrackingTest {
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse()
+	public void testTrackingSingleWithValidIdDate()
 			throws ServletException, IOException {
 		orderTrack.doPost(mockRequest, mockResponse);
 		verify(mockResponse).sendRedirect("/deliverytrackingsystem/order.jsp");
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponseToFail()
+	public void  testTrackingSingleToFailWithInvalidIdDate()
 			throws ServletException, IOException {
 		when(mockRequest.getParameter("date")).thenReturn("23th");
 		orderTrack.doPost(mockRequest, mockResponse);

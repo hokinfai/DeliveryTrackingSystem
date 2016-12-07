@@ -91,7 +91,7 @@ public class AddOrderTest {
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse()
+	public void testAddOrderSuccessfully()
 			throws ServletException, IOException {
 		when(mockOrd.getCompanyByRegiManaName("abc", "abc", "abc")).thenReturn(
 				mockCompany);
@@ -102,7 +102,7 @@ public class AddOrderTest {
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponseToFail()
+	public void testAddOrderToFail_invalidLoginParameters()
 			throws ServletException, IOException {
 		when(mockOrd.getCompanyByRegiManaName("ABC123", "apple", "Alan Ho"))
 				.thenReturn(mockCompany);

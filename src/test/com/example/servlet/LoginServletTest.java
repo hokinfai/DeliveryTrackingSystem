@@ -64,35 +64,37 @@ public class LoginServletTest {
 	}
 
 	@Test
-	public void testDoGetHttpServletRequestHttpServletResponse()
-			throws Exception {
+	public void testDoGetHttpServletRequestHttpServletResponse() throws Exception {
 
 		loginServlet.doGet(mockRequest, mockResponse);
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse()
-			throws Exception {
+	public void testLoginwithValidInputs() throws Exception {
+		// arrange
 		when(mockRequest.getParameter("email")).thenReturn("123");
 		when(mockRequest.getParameter("password")).thenReturn("123");
 		when(mockSer.login("123", "123")).thenReturn(mockUser);
 		when(mockSer.getUserOrder(mockUser)).thenReturn(mockOrderList);
+		// act
 		loginServlet.doPost(mockRequest, mockResponse);
+		// assert
 		verify(mockResponse).sendRedirect("/deliverytrackingsystem/index.jsp");
 		mockUserImp.close();
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponseToFail()
-			throws Exception {
-
+	public void testLoginFail_invalidEmailPassword() throws Exception {
+		// arrange
 		when(mockRequest.getParameter("email")).thenReturn("13");
 		when(mockRequest.getParameter("password")).thenReturn("13");
 		when(mockSer.login("123", "123")).thenReturn(mockUser);
+
+		// act
 		loginServlet.doPost(mockRequest, mockResponse);
 		new RuntimeException();
-		verify(mockResponse).sendRedirect(
-				"/deliverytrackingsystem/loginError.jsp");
+		// assert
+		verify(mockResponse).sendRedirect("/deliverytrackingsystem/loginError.jsp");
 
 	}
 

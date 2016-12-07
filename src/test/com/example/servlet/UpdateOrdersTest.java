@@ -84,7 +84,7 @@ public class UpdateOrdersTest {
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse()
+	public void testSuccessfullyUpdateOrder()
 			throws IOException, ServletException {
 		update.doPost(mockRequest, mockResponse);
 		verify(mockResponse).sendRedirect(

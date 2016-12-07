@@ -1,4 +1,5 @@
-<%@ include file="header.jsp"%>
+<%@ page import="java.util.List" import="com.example.model.Order"
+	import="com.example.model.Company"%><%@ include file="header.jsp"%>
 <!--Navigation Background Part Ends -->
 <!--Our Company Bacground Part Starts -->
 <div id="ourCompany-bg">
@@ -15,9 +16,15 @@
 				<table style="width: 500px">
 					<tr>
 						<td><font face="Comic Sans MS">Order ID:</font></td>
-						<td><input type="text" name="orderId"
-							placeholder="Number Only" style="height: 20px; font-size: 15px"
-							size="31" required></td>
+						<td><select name="orderId">
+								<%
+									List<Order> order = (List<Order>) session.getAttribute("companyOrder");
+								for (Order o : order) {
+								out.print("<option value=" + o.getId() + ">" + o.getId() + "</option>");
+												}
+								%>
+
+						</select></td>
 					</tr>
 					<tr>
 						<td><font face="Comic Sans MS">Ship From:</font></td>

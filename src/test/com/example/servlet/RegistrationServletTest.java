@@ -70,38 +70,31 @@ public class RegistrationServletTest {
 	}
 
 	@Test
-	public void testDoGetHttpServletRequestHttpServletResponse()
-			throws ServletException, IOException {
+	public void testDoGetHttpServletRequestHttpServletResponse() throws ServletException, IOException {
 		registrationServlet.doGet(mockRequest, mockResponse);
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse()
-			throws Exception {
-		when(mockRequest.getParameter("confirmpassword")).thenReturn(
-				"123213213");
+	public void testRegisterWithValidInputs() throws Exception {
+		when(mockRequest.getParameter("confirmpassword")).thenReturn("123213213");
 		registrationServlet.doPost(mockRequest, mockResponse);
 		verify(mockResponse).sendRedirect("/deliverytrackingsystem/index.jsp");
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponseToFail()
-			throws Exception {
+	public void testRegisterToFailWithInvalidInputs_wrongConfirmPassword() throws Exception {
 		when(mockRequest.getParameter("confirmpassword")).thenReturn("1afd");
 		when(md5.md5(anyString())).thenReturn(anyString());
 		registrationServlet.doPost(mockRequest, mockResponse);
-		verify(mockResponse).sendRedirect(
-				"/deliverytrackingsystem/RegistrationPage.jsp");
+		verify(mockResponse).sendRedirect("/deliverytrackingsystem/RegistrationPage.jsp");
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponseToFailWithDuplicateEmail()
-			throws Exception {
+	public void testRegisterToFailWithInvalidInputs_DuplicateEmail() throws Exception {
 		when(mockRequest.getParameter("age")).thenReturn("1d");
 		registrationServlet.doPost(mockRequest, mockResponse);
 		// when(mockSer.save(anyObject())).thenThrow(new RuntimeException());
-		verify(mockResponse).sendRedirect(
-				"/deliverytrackingsystem/emailError.jsp");
+		verify(mockResponse).sendRedirect("/deliverytrackingsystem/emailError.jsp");
 	}
 
 	@After

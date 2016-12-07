@@ -34,7 +34,10 @@
 						out.print("<td>" + order.getDestination() + "</td>");
 						out.print("<td>" + order.getStatus() + "</td>");
 						out.print("<td>" + order.getOrderDate() + "</td>");
-						out.print("<td>" + order.getExpectedArrivalDate() + "</td>");
+						if (!order.getStatus().equalsIgnoreCase("CANCELLED"))
+							out.print("<td>" + order.getExpectedArrivalDate() + "</td>");
+						else
+							out.print("<td>CANCELLED</td>");
 						out.print("<td>" + order.getWeight() + "</td>");
 						out.print("<td>" + order.getSize() + "</td></tr>");
 					%>

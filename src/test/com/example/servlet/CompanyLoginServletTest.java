@@ -66,9 +66,8 @@ public class CompanyLoginServletTest {
 		companylogin = new CompanyLoginServlet(mockSf);
 		when(mockRequest.getSession()).thenReturn(mockSession);
 		when(mockSf.getOrderImp()).thenReturn(mockOrd);
-		when(mockOrd.getCompanyByRegiManaName("ABC123", "apple", "Alan Ho"))
-				.thenReturn(mockCompany);
-		
+		when(mockOrd.getCompanyByRegiManaName("ABC123", "apple", "Alan Ho")).thenReturn(mockCompany);
+
 	}
 
 	@Test
@@ -76,30 +75,17 @@ public class CompanyLoginServletTest {
 	}
 
 	@Test
-	public void testDoGetHttpServletRequestHttpServletResponse()
-			throws ServletException, IOException {
+	public void testDoGetHttpServletRequestHttpServletResponse() throws ServletException, IOException {
 		companylogin.doGet(mockRequest, mockResponse);
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse()
-			throws ServletException, IOException {
-	 when(mockRequest.getParameter("companyname")).thenReturn("sumsung");
-	 when(mockRequest.getParameter("regiNumber")).thenReturn("bbc123");
-	 when(mockRequest.getParameter("managername")).thenReturn("Jose");
+	public void testCompanyLoginSuccessfully() throws ServletException, IOException {
+		when(mockRequest.getParameter("companyname")).thenReturn("sumsung");
+		when(mockRequest.getParameter("regiNumber")).thenReturn("bbc123");
+		when(mockRequest.getParameter("managername")).thenReturn("Jose");
 		companylogin.doPost(mockRequest, mockResponse);
-		verify(mockResponse).sendRedirect(
-				"/deliverytrackingsystem/outgoingOrders.jsp");
+		verify(mockResponse).sendRedirect("/deliverytrackingsystem/outgoingOrders.jsp");
 	}
 
-	// @Test
-	// public void testDoPostHttpServletRequestHttpServletResponseToFail()
-	// throws ServletException, IOException {
-	// when(mockRequest.getParameter("companyname")).thenReturn("faf");
-	// when(mockRequest.getParameter("regiNumber")).thenReturn("bbc123");
-	// when(mockRequest.getParameter("managername")).thenReturn("Alan Ho");
-	// companylogin.doPost(mockRequest, mockResponse);
-	// verify(mockResponse).sendRedirect(
-	// "/deliverytrackingsystem/emailError.jsp");
-	// }
 }

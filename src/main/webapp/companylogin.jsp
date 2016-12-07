@@ -32,7 +32,7 @@
 						<td>&emsp;</td>
 					</tr>
 				</table>
-				<input type="submit" value="Register">
+				<input type="submit" value="Login Now!">
 			</form>
 		</div>
 		<!--Our Company Right Part Ends -->

@@ -17,9 +17,12 @@
 				questions, please contact me via any of the following methods:<br />
 				<br />
 				<ul style="padding-left: 40px">
-					<li><a href="#" title="LinkedIn">&bull; LinkedIn</a></li>
-					<li><a href="#" title="Email">&bull; E-mail</a></li>
-					<li><a href="#" title="GitHub">&bull; GitHub</a></li>
+					<li>&bull; E-mail: hokinfaialan@gmail.com</a></li>
+					<li><a href="https://www.linkedin.com/in/kinfaiho"
+						title="LinkedIn">&bull; LinkedIn</a></li>
+
+					<li><a href="https://www.github.com/hokinfai" title="GitHub">&bull;
+							GitHub</a></li>
 				</ul>
 				<br />
 				<form action="/deliverytrackingsystem/index.jsp">

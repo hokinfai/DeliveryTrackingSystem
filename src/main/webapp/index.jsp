@@ -39,9 +39,9 @@
 			<ul class="ourCompany-list noBottomPadding">
 				<li></li>
 				<li>Email: hokinfaialan@gmail.com</li>
-				<li><a href="www.linkedin.com/in/kinfaiho">LinkedIn</a></li>
-				<li><a href="www.github.com/hokinfai">GitHub</a></li>
-				<li><a href="www.facebook.com/AlanHo">Facebook</a></li>
+				<li><a href="https://www.linkedin.com/in/kinfaiho">LinkedIn</a></li>
+				<li><a href="https://www.github.com/hokinfai">GitHub</a></li>
+				<li><a href="https://www.facebook.com/AlanHo">Facebook</a></li>
 
 			</ul>
 		</div>

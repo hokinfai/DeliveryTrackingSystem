@@ -74,14 +74,12 @@ public class ChangeUserDetailTest {
 	}
 
 	@Test
-	public void testDoGetHttpServletRequestHttpServletResponse()
-			throws ServletException, IOException {
+	public void testDoGetHttpServletRequestHttpServletResponse() throws ServletException, IOException {
 		change.doGet(mockRequest, mockResponse);
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse()
-			throws ServletException, IOException {
+	public void testChangeUserDetailSuccessfully() throws ServletException, IOException {
 		// when(new JavaMD5Hash().md5("123")).thenReturn("123213213");
 		when(mockRequest.getParameter("name")).thenReturn("someone");
 		when(mockRequest.getParameter("surnname")).thenReturn("someone");
@@ -97,20 +95,4 @@ public class ChangeUserDetailTest {
 		verify(mockResponse).sendRedirect("/deliverytrackingsystem/index.jsp");
 	}
 
-	// @Test
-	// public void
-	// testDoPostHttpServletRequestHttpServletResponseToFailByDifferentPassword()
-	// throws ServletException, IOException {
-	// when(mockRequest.getParameter("name")).thenReturn("someone");
-	// when(mockRequest.getParameter("surnname")).thenReturn("someone");
-	// when(mockRequest.getParameter("username")).thenReturn("someone");
-	// when(mockRequest.getParameter("age")).thenReturn("12");
-	// when(mockRequest.getParameter("dob")).thenReturn("12/12/1992");
-	// when(mockRequest.getParameter("password")).thenReturn("123");
-	// when(mockRequest.getParameter("address")).thenReturn("Earth");
-	// User user = mockSer.getUser("new@example.com");
-	// when(mockSession.getAttribute("user")).thenReturn(user);
-	// change.doPost(mockRequest, mockResponse);
-	// verify(mockResponse).sendRedirect("/deliverytrackingsystem/index.jsp");
-	// }
 }
